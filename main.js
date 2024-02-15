@@ -246,7 +246,7 @@ function startProgramm() {
         //* 1. Finde den Index des bearbeiteten Elements im Array
         const index = globalStorage.indexOf(selectedItem);
 
-        // 2.  Überschreibe das bestehende Element im Array mit den neuen Werten
+        //* 2.  Überschreibe das bestehende Element im Array mit den neuen Werten
         globalStorage[index] = new Item( // ich überschreibe das bestehende Element im Array mit einem neuen Item (new Item), das die neuen Werte hat, die ich zuvor gespeichert habe
           updatedName,
           updatedId,
@@ -267,7 +267,46 @@ function startProgramm() {
 
       break;
     case "D":
-      // deleteItem();
+      // Lass dir dein Lager anzeigen
+
+      showStorage();
+
+      // Nutze z.B. die ID um das Element zu selektieren.
+
+      const deleteInput = readlineSync.question(
+        "Bitte geben Sie die ID des Elements ein, das Sie löschen möchten: "
+      );
+
+      // Überprüfe, ob die ID im Array exsistiert und entferne diesen Eintrag aus dem Array.
+
+      const toBeDeleted = globalStorage.find((item) => item.id === deleteInput);
+
+      if (toBeDeleted) {
+        console.log("Das ausgewählte Item ist:");
+        console.log(toBeDeleted);
+      } else {
+        console.log(
+          "Kein Element mit der angegebenen ID gefunden. Bitte geben Sie eine gültige ID ein."
+        );
+        return;
+      }
+
+      // Lösche das ausgewählte Item aus dem Array mit der Funktion deleteItem()
+
+      function deleteItem() {
+        const index = globalStorage.indexOf(deleteItem);
+        globalStorage.splice(index, 1);
+        console.log(
+          "Das ausgewählte Item wurde erfolgreich gelöscht. Unten sehen Sie das aktualisierte Lager:"
+        );
+        // showStorage();
+      }
+      deleteItem();
+
+      // Zeige das aktualisierte Array an, um zu überprüfen, ob das Löschen erfolgreich war.
+
+      showStorage();
+
       break;
     case "Q":
       console.log("Das Programm wird beendet. Bis zum nächsten Mal!");
@@ -291,7 +330,7 @@ function startProgramm() {
 
     default:
       console.log("Invalid input");
-    // startProgramm(); // nicht hier, weil es sonst nach jedem falschen Input wieder startet
+    //! startProgramm(); // nicht hier, weil es sonst nach jedem falschen Input wieder startet
   }
   startProgramm();
 }
