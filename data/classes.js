@@ -10,10 +10,16 @@ export class Item {
 
 // Orakel
 // Klasse Choice
+
 // export class Choice {
-//   lastChoice = false;
 //   constructor(arrayWithAnswers) {
-//     this.list = arrayWithAnswers;
+//     this.arrayWithAnswers = [
+//       "Yes",
+//       "No",
+//       "Maybe",
+//       "Ask me later",
+//       "The Gods have not decided yet",
+//     ];
 //   }
 //   // Methode
 //   choose() {

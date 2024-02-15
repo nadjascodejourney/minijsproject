@@ -312,21 +312,30 @@ function startProgramm() {
       console.log("Das Programm wird beendet. Bis zum nächsten Mal!");
       break;
 
-    /*  
-   // case "O":
-    // oracle.push(
-    //   new Choice([
-    //     "Yes",
-    //     "No",
-    //     "Maybe",
-    //     "Ask me later",
-    //     "The Gods have not decided yet",
-    //   ])
-    // );
-    // for (let i = 0; i < 10; i++) {
-    //   console.log(oracle[i].choose());
-    // }
-    // break; */
+    case "O":
+      const askAQuestion = readlineSync.question(
+        "Stellen Sie eine Ja-Nein-Frage an das Lager-Orakel:"
+      );
+
+      // Orakel
+
+      function chooseRandomAnswer() {
+        const oracleArray = [
+          "Ja",
+          "Nein",
+          "Vielleicht",
+          "Frag mich später nochmal",
+          "Die Lagerhaus-Götter haben sich noch nicht entschieden",
+        ];
+
+        // zufällige Antwort aus dem Array
+        const randomIndex = Math.floor(Math.random() * oracleArray.length);
+        return oracleArray[randomIndex];
+      }
+
+      console.log(chooseRandomAnswer());
+
+      break;
 
     default:
       console.log("Invalid input");
